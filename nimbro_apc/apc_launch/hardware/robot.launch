@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="robot_ip" default="192.168.3.10" />
+	<arg name="min_payload" default="0.0" />
+	<arg name="max_payload" default="10.0" />
+
+	<include file="$(find apc_model)/launch/model.launch" />
+	<include file="$(find apc_launch)/config/server.launch" />
+	<include file="$(find apc_moveit_config)/launch/planning_context.launch" />
+
+	<include file="$(find apc_interface)/launch/apc_interface.launch" />
+
+	<node pkg="tf" type="static_transform_publisher" name="totelink_broadcaster" args="0.8 0 0.404 1.5708 0.02 0 world tote 100" />
+
+	<!-- ur common -->
+	<include file="$(find ur_modern_driver)/launch/ur_common.launch">
+		<arg name="robot_ip" value="$(arg robot_ip)"/>
+		<arg name="min_payload"  value="$(arg min_payload)"/>
+		<arg name="max_payload"  value="$(arg max_payload)"/>
+	</include>
+
+	<node name="collision_detection" pkg="nimbro_collision_detection" type="nimbro_collision_detection" output="screen">
+		<remap from="/joint_states" to="/joint_states_disabled" />
+	</node>
+
+	<include file="$(find apc_launch)/hardware/player.launch" />
+
+	<include file="$(find apc_launch)/hardware/camera_driver.launch" />
+</launch>

@@ -1,0 +1,6 @@
+<library path="lib/libdepth_filler_nodelet">
+	<class name="depth_filler/Nodelet" type="depth_filler::DepthFillerNodelet" base_class_type="nodelet::Nodelet">
+		<description>
+		</description>
+	</class>
+</library>

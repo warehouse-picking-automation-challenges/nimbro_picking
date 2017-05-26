@@ -1,0 +1,7 @@
+<library path="lib/libapc_kinematics">
+	<class type="apc_kinematics::APCKinematics" base_class_type="kinematics::KinematicsBase">
+		<description>
+			APC Inverse / Forward Kinematics
+		</description>
+	</class>
+</library>

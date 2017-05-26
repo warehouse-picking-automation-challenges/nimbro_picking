@@ -1,0 +1,5 @@
+MotionMsg motion
+bool save
+bool play
+---
+bool success # true if play is true and the motion was successfully planned

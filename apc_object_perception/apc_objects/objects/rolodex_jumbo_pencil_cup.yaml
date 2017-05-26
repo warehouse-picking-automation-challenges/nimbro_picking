@@ -1,0 +1,9 @@
+bonus_points: 3
+
+standing_hight: 14.0
+
+bBox: [11.0, 11.0, 14.0]
+
+stow_forbidden: False
+
+big: true

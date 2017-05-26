@@ -1,0 +1,47 @@
+function apcObj = getAPCObjList
+apcObj = {...
+	'barkely_hide_bones', ...                   % 1
+	'box', ...                                  % 2
+	'cherokee_easy_tee_shirt', ...              % 3
+	'clorox_utility_brush', ...                 % 4
+	'cloud_b_plush_bear', ...                   % 5
+	'command_hooks', ...                        % 6
+	'cool_shot_glue_sticks', ...                % 7
+	'crayola_24_ct', ...                        % 8
+	'creativity_chenille_stems', ...            % 9
+	'dasani_water_bottle', ...                  % 10
+	'dove_beauty_bar', ...                      % 11
+	'dr_browns_bottle_brush', ...               % 12
+	'easter_turtle_sippy_cup', ...              % 13
+	'elmers_washable_no_run_school_glue', ...   % 14
+	'expo_dry_erase_board_eraser', ...          % 15
+	'fiskars_scissors_red', ...                 % 16
+	'fitness_gear_3lb_dumbbell', ...            % 17
+	'folgers_classic_roast_coffee', ...         % 18
+	'hanes_tube_socks', ...                     % 19
+	'i_am_a_bunny_book', ...                    % 20
+	'jane_eyre_dvd', ...                        % 21
+	'kleenex_paper_towels', ...                 % 22
+	'kleenex_tissue_box', ...                   % 23
+	'kyjen_squeakin_eggs_plush_puppies', ...    % 24
+	'laugh_out_loud_joke_book', ...             % 25
+	'oral_b_toothbrush_green', ...              % 26
+	'oral_b_toothbrush_red', ...                % 27
+	'peva_shower_curtain_liner', ...            % 28
+	'platinum_pets_dog_bowl', ...               % 29
+	'rawlings_baseball', ...                    % 30
+	'rolodex_jumbo_pencil_cup', ...             % 31
+	'safety_first_outlet_plugs', ...            % 32
+	'scotch_bubble_mailer', ...                 % 33
+	'scotch_duct_tape', ...                     % 34
+	'soft_white_lightbulb', ...                 % 35
+	'staples_index_cards', ...                  % 36
+	'ticonderoga_12_pencils', ...               % 37
+	'up_glucose_bottle', ...                    % 38
+	'womens_knit_gloves', ...                   % 39
+	'woods_extension_cord', ...                 % 40
+	'front_bar', ...                            % 41
+	'side_bar', ...                             % 42
+	'ground_metal' ...                          % 43
+    }';                   
+end

@@ -1,0 +1,16 @@
+<library path="lib/librqt_servo_diagnostics">
+	<class name="rqt_servo_diagnostics" type="rqt_servo_diagnostics::ServoDiagnostics" base_class_type="rqt_gui_cpp::Plugin">
+		<description>
+			Servo Diagnostics
+		</description>
+		<qtgui>
+			<group>
+				<label>nimbro_actuators</label>
+			</group>
+
+			<label>Servo Diagnostics</label>
+			<icon type="theme">utilities-system-monitor</icon>
+			<statustip>Servo Diagnostics GUI</statustip>
+		</qtgui>
+	</class>
+</library>

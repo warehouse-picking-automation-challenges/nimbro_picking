@@ -1,0 +1,5 @@
+<library path="lib/libapc_motion">
+	<class type="apc_motion::APCMotion" base_class_type="robotcontrol::MotionModule">
+		<description></description>
+	</class>
+</library>

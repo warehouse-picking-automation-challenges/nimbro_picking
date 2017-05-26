@@ -1,0 +1,9 @@
+bonus_points: 1
+
+bBox: [20.0, 18.0, 9.0]
+
+stow_forbidden: False
+
+big: true
+
+registration: true

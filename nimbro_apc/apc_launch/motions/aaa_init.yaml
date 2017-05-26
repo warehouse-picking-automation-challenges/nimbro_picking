@@ -1,0 +1,19 @@
+name: aaa_init
+keyframes:
+  - active_joint_groups:
+      arm_with_eef:
+        interpolation_space: jointspace
+    joints:
+      elbow_joint: 1.995622992515564
+      shoulder_lift_joint: -2.239166021347046
+      shoulder_pan_joint: 0.7479680180549622
+      suc_finger_joint: 0.1000000014901161
+      suc_fingertip_joint: 0
+      wrist_1_joint: 0.2435269951820374
+      wrist_2_joint: 0.747937023639679
+      wrist_3_joint: -0.4065654277801514
+    label: frame0
+    linearVelocity: 0.05000000074505806
+    angularVelocity: 0.1000000014901161
+    torqueProportion: -1
+    continuous: false

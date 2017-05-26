@@ -1,0 +1,17 @@
+<package format="2">
+	<name>apc_densecap</name>
+	<description>Object recognition for APC using DenseCap</description>
+	<version>0.0.1</version>
+	<license>BSD</license>
+
+	<maintainer email="max.schwarz@uni-bonn.de">Max Schwarz</maintainer>
+
+	<buildtool_depend>catkin</buildtool_depend>
+	<depend>nodelet</depend>
+	<depend>apc_capture</depend>
+
+	<export>
+		<nodelet plugin="${prefix}/nodelet_plugin.xml" />
+	</export>
+</package>
+

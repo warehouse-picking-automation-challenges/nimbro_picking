@@ -1,0 +1,21 @@
+jointinfo:
+  - name : "shoulder_pan_joint"
+    action : "/follow_joint_trajectory"
+  - name : "shoulder_lift_joint"
+    action : "/follow_joint_trajectory"
+  - name : "elbow_joint"
+    action : "/follow_joint_trajectory"
+  - name : "wrist_1_joint"
+    action : "/follow_joint_trajectory"
+  - name : "wrist_2_joint"
+    action : "/follow_joint_trajectory"
+  - name : "wrist_3_joint"
+    action : "/follow_joint_trajectory"
+  - name : "suc_finger_joint"
+    action : "/hand_controller/follow_joint_trajectory"
+    path_tolerance: 1.57
+    goal_tolerance: 1.57
+  - name : "suc_fingertip_joint"
+    action : "/hand_controller/follow_joint_trajectory"
+    path_tolerance: 1.57
+    goal_tolerance: 1.57

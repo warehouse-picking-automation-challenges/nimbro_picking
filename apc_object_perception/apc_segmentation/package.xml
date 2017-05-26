@@ -1,0 +1,12 @@
+<package format="2">
+	<name>apc_segmentation</name>
+	<description>Object-class segmentation for APC</description>
+	<version>0.0.1</version>
+	<license>BSD</license>
+
+	<maintainer email="anton.milan@ais.uni-bonn.de">Anton Milan</maintainer>
+
+	<buildtool_depend>catkin</buildtool_depend>
+	<depend>pcl_ros</depend>
+	<depend>apc_densecap</depend>
+</package>

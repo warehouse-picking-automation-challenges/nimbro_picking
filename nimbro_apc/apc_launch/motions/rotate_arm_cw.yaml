@@ -1,0 +1,56 @@
+name: rotate_arm_cw
+keyframes:
+  - active_joint_groups:
+      arm:
+        interpolation_space: cartesian
+        state:
+          x: 0.7163213491439819
+          y: -0.01944434270262714
+          z: 1.129669785499573
+          roll: 0.04323797056257312
+          pitch: 1.570882588513365
+          yaw: 0.008864120495925221
+      arm_eef:
+        interpolation_space: jointspace
+    joints:
+      suc_finger_joint: 0
+      suc_fingertip_joint: 0
+    label: frame0
+    linearVelocity: 0.4000000059604645
+    angularVelocity: 0.4000000059604645
+    torqueProportion: -1
+    continuous: false
+  - active_joint_groups:
+      arm:
+        interpolation_space: cartesian
+        state:
+          x: 0.7163213491439822
+          y: -0.01944434270262721
+          z: 1.129669785499573
+          roll: 1.573691015500344
+          pitch: 1.570882550520006
+          yaw: 0.01991801011240302
+    joints:
+      {}
+    label: copy of frame0
+    linearVelocity: 0.6
+    angularVelocity: 0.6
+    torqueProportion: -1
+    continuous: true
+  - active_joint_groups:
+      arm:
+        interpolation_space: cartesian
+        state:
+          x: 0.716321370311359
+          y: -0.01944697230287123
+          z: 1.129669981518709
+          roll: -3.113893316593821
+          pitch: 1.570882315668547
+          yaw: 0.02762220782492264
+    joints:
+      {}
+    label: copy of frame0
+    linearVelocity: 0.6
+    angularVelocity: 0.6
+    torqueProportion: -1
+    continuous: false

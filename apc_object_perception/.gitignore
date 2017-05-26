@@ -1,0 +1,10 @@
+*~
+.idea/
+
+# ignore python .pyc file
+*.pyc
+
+# ignore png files
+*.png 
+
+**/Session.vim

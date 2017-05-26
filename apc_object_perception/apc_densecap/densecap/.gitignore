@@ -1,0 +1,8 @@
+/data
+*.swp
+/vis/data/*.jpg
+/vis/data/*.json
+/vis*
+*.t7
+*.t7.json
+

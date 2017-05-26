@@ -1,0 +1,384 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="apc_setup">
+	<property name="table_size_x" value="1.0" />
+	<property name="table_size_y" value="0.8" />
+	<property name="table_height" value="1.11" />
+
+	<property name="extender_length" value="0.432" />
+	<property name="extender_radius" value="0.035" />
+
+	<property name="suc_finger_length" value="0.504" />
+	<property name="suc_finger_height" value="0.025" />
+	<property name="suc_finger_overlap" value="0.064" /> <!-- distance between start of extender link and the finger if it is fully retracted -->
+	<property name="finger_arm_gap" value="0.0545" /><!-- distance between extender center and finger center in z-direction -->
+
+	<property name="suc_fingertip_height" value="0.029" />
+	<property name="suc_fingertip_length" value="0.042" />
+
+	<property name="sensor_height" value="0.08" />
+	<property name="sensor_length" value="0.03" />
+	<property name="sensor_width" value="0.17" />
+
+	<property name="finger_mount_height" value="0.05" />
+	<property name="finger_mount_length" value="0.08" />
+	<property name="finger_mount_width" value="0.1" />
+
+	<link name="world">
+	</link>
+
+	<joint name="base_fixed" type="fixed">
+		<parent link="world" />
+		<child link="base_link" />
+		<origin xyz="0 0 ${table_height}" rpy="0 0 ${-pi/2.0}" />
+	</joint>
+
+	<link name="table_link">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="${table_size_x} ${table_size_y} ${table_height}" />
+			</geometry>
+			<material name="lightgrey">
+				<color rgba="0.4 0.4 0.4 1"/>
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="${table_size_x} ${table_size_y} ${table_height}" />
+			</geometry>
+		</collision>
+	</link>
+	<joint name="table_joint" type="fixed">
+		<parent link="world" />
+		<child link="table_link" />
+		<origin xyz="${-table_size_x/2 + 0.1} 0 ${table_height/2}" />
+	</joint>
+
+	<!-- common stuff -->
+	<xacro:include filename="$(find ur_description)/urdf/common.gazebo.xacro" />
+
+	<!-- ur10 -->
+	<xacro:include filename="$(find ur_description)/urdf/ur10.urdf.xacro" />
+
+	<!-- arm -->
+	<xacro:ur10_robot prefix="" joint_limited="false"/>
+
+
+
+
+
+	<link name="extender_link">
+		<visual>
+			<origin xyz="${extender_length/2} 0.0 0.0" rpy="0.0 ${pi/2.0} 0.0" />
+			<geometry>
+				<cylinder radius="${extender_radius}" length="${extender_length}" />
+			</geometry>
+			<material name="lightgrey">
+				<color rgba="0.4 0.4 0.4 1"/>
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="${extender_length/2} 0.0 0.0" rpy="0.0 ${pi/2.0} 0.0" />
+			<geometry>
+				<cylinder radius="${extender_radius}" length="${extender_length}" />
+			</geometry>
+		</collision>
+		<inertial>
+			<origin xyz="${extender_length/2} 0 0" rpy="0 0 0" />
+			<mass value="0.001" />
+			<inertia
+			ixx="0.001" ixy="0.0" ixz="0.0"
+			iyy="0.001" iyz="0.0"
+			izz="0.001" />
+		</inertial>
+	</link>
+
+	<joint name="extender_joint" type="fixed">
+		<parent link="ee_link" />
+		<child link="extender_link" />
+		<origin xyz="0 0 0" rpy="${pi} 0.01 0" />
+	</joint>
+
+	<link name="apc_eef_link">
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<mass value="0.001" />
+			<inertia
+			ixx="0.001" ixy="0.0" ixz="0.0"
+			iyy="0.001" iyz="0.0"
+			izz="0.001" />
+		</inertial>
+	</link>
+
+	<joint name="apc_eef_joint" type="fixed">
+		<parent link="extender_link" />
+		<child link="apc_eef_link" />
+		<origin xyz="${extender_length} 0 0" rpy="0.3245733420001429 0 0" />
+	</joint>
+
+	<link name="finger_mount_visual_link" >
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="${finger_mount_length} ${finger_mount_width} ${finger_mount_height}"/>
+			</geometry>
+			<material name="red">
+				<color rgba="0.9 0.0 0.0 1"/>
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="${finger_mount_length} ${finger_mount_width} ${finger_mount_height}"/>
+			</geometry>
+		</collision>
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<mass value="0.001" />
+			<inertia
+			ixx="0.001" ixy="0.0" ixz="0.0"
+			iyy="0.001" iyz="0.0"
+			izz="0.001" />
+		</inertial>
+	</link>
+
+
+	<joint name="finger_mount_visual_joint" type="fixed">
+		<parent link="apc_eef_link" />
+		<child link="finger_mount_visual_link" />
+		<origin xyz="${finger_mount_length / 2} -0.01 -${extender_radius / 2 + finger_mount_height / 2 - 0.005}" rpy="0 0 0" />
+	</joint>
+
+
+	<!-- Link directly in line with the suc_finger_link" -->
+	<link name="suc_finger_mount_link">
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<mass value="0.001" />
+			<inertia
+			ixx="0.001" ixy="0.0" ixz="0.0"
+			iyy="0.001" iyz="0.0"
+			izz="0.001" />
+		</inertial>
+	</link>
+	<joint name="suc_finger_mount" type="fixed">
+		<parent link="apc_eef_link" />
+		<child link="suc_finger_mount_link" />
+		<origin xyz="${suc_finger_overlap-extender_length} 0 ${-finger_arm_gap}" />
+	</joint>
+
+	<link name="suc_finger_link">
+		<visual>
+			<origin xyz="${suc_finger_length/2} 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="${suc_finger_length} ${suc_finger_height} ${suc_finger_height}"/>
+			</geometry>
+			<material name="lightgrey">
+				<color rgba="0.4 0.4 0.4 1"/>
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="${suc_finger_length/2} 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="${suc_finger_length} ${suc_finger_height} ${suc_finger_height}"/>
+			</geometry>
+		</collision>
+		<inertial>
+			<origin xyz="${suc_finger_length/2} 0 0" rpy="0 0 0" />
+			<mass value="0.001" />
+			<inertia
+			ixx="0.001" ixy="0.0" ixz="0.0"
+			iyy="0.001" iyz="0.0"
+			izz="0.001" />
+		</inertial>
+	</link>
+
+
+	<joint name="suc_finger_joint" type="prismatic">
+		<origin xyz="0 0 0" rpy="0 0 0" />
+		<parent link="suc_finger_mount_link"/>
+		<child link="suc_finger_link"/>
+		<axis xyz="1 0 0"/>
+		<limit lower="0.0" upper="0.36" velocity="1.0" effort="180.0" />
+	</joint>
+
+	<transmission name="suc_finger_transmission">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="suc_finger_joint" >
+			<hardwareInterface>EffortJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="suc_finger_joint">
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+
+
+	<link name="suc_fingertip_link">
+		<visual>
+			<origin xyz="${suc_fingertip_length/2} 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="${suc_fingertip_length} ${suc_fingertip_height} ${suc_fingertip_height}"/>
+			</geometry>
+			<material name="lightgrey">
+				<color rgba="0.4 0.4 0.4 1"/>
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="${suc_fingertip_length/2} 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="${suc_fingertip_length} ${suc_fingertip_height} ${suc_fingertip_height}"/>
+			</geometry>
+		</collision>
+		<inertial>
+			<origin xyz="${suc_fingertip_length/2} 0 0" rpy="0 0 0" />
+			<mass value="0.001" />
+			<inertia
+			ixx="0.001" ixy="0.0" ixz="0.0"
+			iyy="0.001" iyz="0.0"
+			izz="0.001" />
+		</inertial>
+	</link>
+
+
+	<joint name="suc_fingertip_joint" type="revolute">
+		<origin xyz="${suc_finger_length}  0 0" rpy="0 0 0" />
+		<parent link="suc_finger_link"/>
+		<child link="suc_fingertip_link"/>
+		<axis xyz="0 1 0" />
+		<limit lower="0.0" upper="${pi/2}" velocity="300" effort="180"/>
+	</joint>
+
+
+	<transmission name="suc_fingertip_transmission">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="suc_fingertip_joint" >
+			<hardwareInterface>EffortJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="suc_fingertip_joint">
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+
+
+
+	<link name="ik_limit_link">
+	</link>
+
+	<joint name="ik_limit_joint" type="fixed">
+		<parent link="apc_eef_link" />
+		<child link="ik_limit_link" />
+		<origin xyz="0 0 ${- finger_arm_gap}" />
+	</joint>
+
+
+
+	<!-- ============================= CAMERA ============================== -->
+	<link name="camera">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="${sensor_length} ${sensor_width} ${sensor_height}"/>
+			</geometry>
+			<material name="lightgrey">
+				<color rgba="0.4 0.4 0.4 1"/>
+			</material>
+		</visual>
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<geometry>
+				<box size="${sensor_length} ${sensor_width} ${sensor_height}"/>
+			</geometry>
+		</collision>
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0" />
+			<mass value="0.001" />
+			<inertia
+			ixx="0.001" ixy="0.0" ixz="0.0"
+			iyy="0.001" iyz="0.0"
+			izz="0.001" />
+		</inertial>
+	</link>
+	<joint name="camera_joint" type="fixed">
+		<parent link="apc_eef_link" />
+		<child link="camera" />
+		<origin xyz="0.04 0.0 0.068" rpy="0 ${20.0*pi/180} 0" />  <!-- pitch 0.4 -->
+	</joint>
+
+	<link name="camera_optical">
+	</link>
+	<joint name="camera_optical_joint" type="fixed">
+		<parent link="camera" />
+		<child link="camera_optical" />
+		<origin xyz="0 0 0" rpy="${-pi/2} 0.0 ${-pi/2}" />
+	</joint>
+
+	<link name="camera_2_optical">
+	</link>
+	<joint name="camera_2_optical_joint" type="fixed">
+		<parent link="camera" />
+		<child link="camera_2_optical" />
+		<origin xyz="0 0 0" rpy="1.561 0 1.571" />
+	</joint>
+
+
+	<gazebo reference="camera">
+		<sensor type="depth" name="camera">
+			<update_rate>30.0</update_rate>
+			<camera name="camera">
+				<horizontal_fov>1.2096819</horizontal_fov>
+				<image>
+					<width>1920</width>
+					<height>1080</height>
+					<format>R8G8B8</format>
+				</image>
+				<clip>
+					<near>0.02</near>
+					<far>2.0</far>
+				</clip>
+				<noise>
+					<type>gaussian</type>
+					<mean>0.0</mean>
+					<stddev>0.007</stddev>
+				</noise>
+			</camera>
+			<plugin name="camera_optical_controller" filename="libgazebo_ros_openni_kinect.so">
+				<baseline>0.0</baseline>
+				<alwaysOn>true</alwaysOn>
+				<updateRate>1.0</updateRate>
+				<cameraName>camera</cameraName>
+				<imageTopicName>/camera/rgb/image_raw</imageTopicName>
+				<cameraInfoTopicName>/camera/rgb/camera_info</cameraInfoTopicName>
+				<depthImageTopicName>/camera/depth/image_raw</depthImageTopicName>
+				<depthImageCameraInfoTopicName>/camera/depth/camera_info</depthImageCameraInfoTopicName>
+				<pointCloudTopicName>/camera/depth/points</pointCloudTopicName>
+				<frameName>camera_optical</frameName>
+				<pointCloudCutoff>0.0</pointCloudCutoff>
+				<width>1920</width>
+				<height>1080</height>
+			</plugin>
+		</sensor>
+	</gazebo>
+	<!-- ============================= CAMERA ============================== -->
+
+	<link name="suc_cup_base_link">
+	</link>
+	<joint name="suc_cup_base_joint" type="fixed">
+		<parent link="suc_fingertip_link" />
+		<child link="suc_cup_base_link" />
+		<origin xyz="${suc_fingertip_length} 0 0" rpy="0 0 0" />
+	</joint>
+
+	<link name="dummy_eef_link">
+		<visual>
+			<geometry>
+				<box size="0.01 0.01 0.01" />
+			</geometry>
+		</visual>
+	</link>
+	<joint name="dummy_eef_joint" type="continuous">
+		<parent link="suc_cup_base_link" />
+		<child link="dummy_eef_link" />
+		<origin xyz="0 0 0" rpy="0 0 0" />
+	</joint>
+</robot>

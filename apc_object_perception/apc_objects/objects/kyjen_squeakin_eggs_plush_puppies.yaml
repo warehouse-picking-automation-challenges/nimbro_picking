@@ -1,0 +1,13 @@
+bonus_points: 1
+
+bBox: [12.0, 13.0, 6.5]
+
+stow_forbidden: False
+
+heuristic_grasps: [top, center]
+
+top_grasp_high: True
+
+suction_strength: 1.0
+
+air_velocity_threshold: 0.42

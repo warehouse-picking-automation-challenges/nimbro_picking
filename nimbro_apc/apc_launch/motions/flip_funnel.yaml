@@ -1,0 +1,78 @@
+name: flip_funnel
+version: 2
+keyframes:
+  - active_joint_groups:
+      arm:
+        interpolation_space: cartesian
+        state:
+          x: 0.8076149225234983
+          y: -0.2893668711185455
+          z: 1.014718413352966
+          roll: -3.140900112037467
+          pitch: -3.139696693115384
+          yaw: 3.139839992746971
+    joints:
+      {}
+    label: frame0
+    linearVelocity: 0.6000000238418579
+    angularVelocity: 0.6000000238418579
+    torqueProportion: -1
+    continuous: false
+  - active_joint_groups:
+      arm:
+        interpolation_space: cartesian
+        state:
+          x: 0.8136547207832335
+          y: -0.2892740666866302
+          z: 0.9605795741081236
+          roll: -3.140895850553497
+          pitch: -3.139722939592597
+          yaw: 3.139896716357443
+    joints:
+      {}
+    label: copy of frame0
+    linearVelocity: 0.6000000238418579
+    angularVelocity: 0.6000000238418579
+    torqueProportion: -1
+    continuous: false
+  - active_joint_groups:
+      arm:
+        interpolation_space: cartesian
+        state:
+          x: 0.8267678618431089
+          y: -0.2893201112747191
+          z: 0.9576380252838134
+          roll: -3.14099990616682
+          pitch: -3.139702633449859
+          yaw: 3.139809699954299
+    joints:
+      {}
+    label: copy of copy of frame0
+    linearVelocity: 0.6000000238418579
+    angularVelocity: 0.6000000238418579
+    torqueProportion: -1
+    continuous: false
+  - active_joint_groups:
+      arm:
+        interpolation_space: cartesian
+        state:
+          x: 0.9201836585998534
+          y: -0.2893814742565156
+          z: 0.9578337669372557
+          roll: -3.140936252828926
+          pitch: -3.139727184799802
+          yaw: 3.13977768414385
+    joints:
+      elbow_joint: 2.261063098907471
+      shoulder_lift_joint: -1.01885461807251
+      shoulder_pan_joint: 0.4684222340583801
+      suc_finger_joint: 0.0001840776967583224
+      suc_fingertip_joint: 1.557852625846863
+      wrist_1_joint: -0.6298284530639648
+      wrist_2_joint: 0.5276978611946106
+      wrist_3_joint: -0.8836539387702942
+    label: copy of copy of copy of frame0
+    linearVelocity: 0.1000000014901161
+    angularVelocity: 0.1000000014901161
+    torqueProportion: -1
+    continuous: false

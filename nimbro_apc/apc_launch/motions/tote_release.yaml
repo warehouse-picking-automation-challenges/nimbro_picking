@@ -1,0 +1,36 @@
+name: tote_release
+keyframes:
+  - active_joint_groups:
+      arm_with_eef:
+        interpolation_space: cartesian
+        state:
+          x: 0.7750154557861936
+          y: 0.04831184593209929
+          z: 0.9048183042274904
+          roll: -0.168882886325104
+          pitch: 1.516603283751122
+          yaw: 0.139956847118621
+    joints:
+      {}
+    label: frame0
+    linearVelocity: 0.300000011920929
+    angularVelocity: 0.4000000059604645
+    torqueProportion: -1
+    continuous: true
+  - active_joint_groups:
+      arm_with_eef:
+        interpolation_space: cartesian
+        state:
+          x: 0.787579042625446
+          y: 0.05020562049253449
+          z: 0.6857500047958196
+          roll: -0.07556584876424502
+          pitch: 1.516603307512223
+          yaw: 0.1399598690148317
+    joints:
+      {}
+    label: copy of frame0
+    linearVelocity: 0.4000000059604645
+    angularVelocity: 0.6000000238418579
+    torqueProportion: -1
+    continuous: false

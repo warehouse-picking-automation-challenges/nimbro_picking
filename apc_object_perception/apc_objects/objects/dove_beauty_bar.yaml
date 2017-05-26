@@ -1,0 +1,5 @@
+bBox: [3.5, 9.0, 6.5]
+
+heuristic_grasps: [center]
+top_grasp_high: True
+

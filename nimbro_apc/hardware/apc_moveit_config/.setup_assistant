@@ -1,0 +1,8 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: apc_model
+    relative_path: robots/apc_setup.urdf.xacro
+  SRDF:
+    relative_path: config/apc_setup.srdf
+  CONFIG:
+    generated_timestamp: 1457369191

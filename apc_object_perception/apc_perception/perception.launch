@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<launch>
+	<arg name="dataset_path" default="/home/max/apc/bags/apc_data/shelf" />
+	<arg name="recognition_module" default="rbo" />
+
+	<!--start the perception nodelet   -->
+	<node pkg="nodelet" type="nodelet" name="perception"
+		args="standalone apc_perception/PerceptionNodelet nodelet_manager" >
+
+		<param name="recognition_module" value="$(arg recognition_module)" />
+		<param name="dataset_path" value="$(arg dataset_path)" />
+
+		<remap from="~cloud" to="/camera_filler/output"/>
+		<remap from="~camera_info" to="/camera_stereo/cam2/camera_info" />	
+	</node>
+</launch>

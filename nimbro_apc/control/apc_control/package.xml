@@ -1,0 +1,27 @@
+<package format="2">
+	<name>apc_control</name>
+	<version>0.0.0</version>
+	<description>Control node for apc tasks</description>
+
+	<maintainer email="chrislenz@uni-bonn.de">Christian Lenz</maintainer>
+
+	<license>BSD</license>
+
+	<buildtool_depend>catkin</buildtool_depend>
+	<depend>config_server</depend>
+	<depend>nimbro_keyframe_server</depend>
+	<depend>apc_perception</depend>
+	<depend>nimbro_fsm</depend>
+	<depend>std_srvs</depend>
+	<depend>apc_shelf_model</depend>
+	<depend>apc_shelf_registration</depend>
+	<depend>apc_interface</depend>
+	<depend>apc_objects</depend>
+	<depend>rqt_gui</depend>
+	<depend>moveit_core</depend>
+	<depend>moveit_ros_planning_interface</depend>
+
+	<export>
+		<rqt_gui plugin="${prefix}/rqt_plugin.xml" />
+	</export>
+</package>

@@ -1,0 +1,24 @@
+<package format="2">
+	<version>0.0.1</version>
+	<name>apc_interface</name>
+	<description>Interface for microcontroller</description>
+	<license>TBD</license>
+	<maintainer email="schuell1@cs.uni-bonn.de">Sebastian Schüller</maintainer>
+
+	<buildtool_depend>catkin</buildtool_depend>
+	<depend>message_runtime</depend>
+	<depend>message_generation</depend>
+	<depend>std_srvs</depend>
+	<depend>catch_ros</depend>
+	<depend>robotcontrol</depend>
+	<depend>hardware_interface</depend>
+	<depend>controller_manager</depend>
+	<depend>rqt_gui</depend>
+	<depend>plot_msgs</depend>
+	<depend>config_server</depend>
+
+	<export>
+		<rqt_gui plugin="${prefix}/rqt_plugin.xml" />
+	</export>
+
+</package>

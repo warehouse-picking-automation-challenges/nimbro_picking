@@ -1,0 +1,9 @@
+drc_controller:
+
+-U lfuse:w:0xff:m -U hfuse:w:0xdc:m -U efuse:w:0xff:m 
+
+hand controller:
+
+-U lfuse:w:0xff:m -U hfuse:w:0xd8:m -U efuse:w:0xff:m
+
+

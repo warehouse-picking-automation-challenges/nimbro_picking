@@ -1,0 +1,17 @@
+<package format="2">
+	<name>apc_motion</name>
+	<description>robotcontrol plugin for APC motion control</description>
+	<version>0.0.1</version>
+	<license>BSD</license>
+
+	<maintainer email="max.schwarz@uni-bonn.de">Max Schwarz</maintainer>
+
+	<buildtool_depend>catkin</buildtool_depend>
+	<depend>robotcontrol</depend>
+	<depend>plot_msgs</depend>
+	<depend>nimbro_keyframe_server</depend>
+
+	<export>
+		<robotcontrol plugin="${prefix}/robotcontrol_plugin.xml" />
+	</export>
+</package>

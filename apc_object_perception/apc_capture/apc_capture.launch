@@ -1,0 +1,17 @@
+<launch>
+
+
+	<!-- start nodelet manager   -->
+	<node pkg="nodelet" type="nodelet" name="nodelet_manager"  args="manager"/>
+
+	<!--start the box reg nodelet   -->
+	<node pkg="nodelet" type="nodelet" name="BoxReg"
+			args="load apc_object_perception/BoxRegistration nodelet_manager" />
+	<node pkg="nodelet" type="nodelet" name="Features"
+			args="load apc_object_perception/Features nodelet_manager" />
+
+	<!-- lauch gazebo   -->
+
+	<include file="$(find apc_model)/launch/gazebo.launch"/>
+	<include file="$(find apc_launch)/simulation/simulation.launch"/>
+</launch>

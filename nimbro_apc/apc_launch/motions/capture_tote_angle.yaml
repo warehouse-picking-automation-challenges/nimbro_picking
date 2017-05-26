@@ -1,0 +1,45 @@
+name: capture_tote_angle
+version: 2
+keyframes:
+  - active_joint_groups:
+      arm_eef:
+        interpolation_space: jointspace
+    joints:
+      elbow_joint: 2.445121288299561
+      shoulder_lift_joint: -0.8716614842414856
+      shoulder_pan_joint: -5.136360645294189
+      suc_finger_joint: 0.0009933417895808816
+      suc_fingertip_joint: 1.563058853149414
+      wrist_1_joint: -3.38399863243103
+      wrist_2_joint: -1.440877318382263
+      wrist_3_joint: -0.4166243672370911
+    label: finger
+    linearVelocity: 8
+    angularVelocity: 0.1000000014901161
+    torqueProportion: -1
+    continuous: false
+  - active_joint_groups:
+      arm:
+        interpolation_space: cartesian
+        state:
+          x: 0.7163186073303223
+          y: -0.01944646984338759
+          z: 1.12967050075531
+          roll: 0.06155454332681512
+          pitch: 1.213112034699929
+          yaw: 0.0367856365732827
+    joints:
+      elbow_joint: 2.445121288299561
+      shoulder_lift_joint: -0.8716614842414856
+      shoulder_pan_joint: -5.136360645294189
+      wrist_1_joint: -3.38399863243103
+      wrist_2_joint: -1.440877318382263
+      wrist_3_joint: -0.4166243672370911
+    label: arm
+    linearVelocity: 1.299999952316284
+    angularVelocity: 1.399999976158142
+    jointSpaceVelocity: 2
+    linearAcceleration: 1.299999952316284
+    angularAcceleration: 1.799999952316284
+    torqueProportion: -1
+    continuous: false

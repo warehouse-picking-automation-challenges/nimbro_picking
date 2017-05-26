@@ -1,0 +1,18 @@
+<package format="2">
+	<name>nimbro_realsense</name>
+	<description>Small ROS driver for Intel RealSense cameras</description>
+	<version>0.0.1</version>
+	<license>BSD</license>
+	<maintainer email="max.schwarz@uni-bonn.de">Max Schwarz</maintainer>
+
+	<buildtool_depend>catkin</buildtool_depend>
+	<depend>roscpp</depend>
+	<depend>nodelet</depend>
+	<depend>image_geometry</depend>
+	<depend>config_server</depend>
+	<depend>depth_filler</depend>
+
+	<export>
+		<nodelet plugin="${prefix}/nodelet_plugin.xml" />
+	</export>
+</package>

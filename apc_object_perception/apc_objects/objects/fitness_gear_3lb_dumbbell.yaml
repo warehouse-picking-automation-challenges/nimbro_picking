@@ -1,0 +1,14 @@
+bonus_points: 3
+
+standing_hight: 15.0
+
+bBox: [7.0, 7.0, 15.0]
+
+difficulty: 100
+
+suction_strength: 1.0
+mass: 2.5
+
+erode: 20
+
+heuristic_grasps: [center]

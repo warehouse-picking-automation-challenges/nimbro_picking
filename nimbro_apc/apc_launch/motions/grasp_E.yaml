@@ -1,0 +1,32 @@
+name: grasp_E
+version: 2
+keyframes:
+  - active_joint_groups:
+      arm_eef:
+        interpolation_space: jointspace
+    joints:
+      suc_finger_joint: 0
+      suc_fingertip_joint: 1.176437497138977
+    label: move arm
+    linearVelocity: 4
+    angularVelocity: 0.1500000059604645
+    torqueProportion: -1
+    continuous: false
+  - active_joint_groups:
+      arm:
+        interpolation_space: cartesian
+        state:
+          x: 0.9700000003268452
+          y: -9.303167147842878e-11
+          z: 1.512499998109971
+          roll: -9.773570841530775e-13
+          pitch: 3.820329554648471e-13
+          yaw: 3.383404667545165e-13
+    joints:
+      suc_finger_joint: 0
+      suc_fingertip_joint: 0
+    label: "[shelf]"
+    linearVelocity: 0.2000000029802322
+    angularVelocity: 0.2000000029802322
+    torqueProportion: -1
+    continuous: false

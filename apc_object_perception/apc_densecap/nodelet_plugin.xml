@@ -1,0 +1,6 @@
+<library path="lib/libapc_densecap_recognition_nodelet">
+	<class name="apc_densecap/RecognitionNodelet" type="apc_densecap::RecognitionNodelet" base_class_type="nodelet::Nodelet">
+		<description>
+		</description>
+	</class>
+</library>

@@ -1,0 +1,21 @@
+<package format="2">
+	<name>nimbro_keyframe_editor</name>
+	<version>0.0.1</version>
+	<description>
+		Edits keyframe motions saved using the nimbro_keyframe_server
+		and contains teleoperation functionality for momaro_upper_body
+	</description>
+	<maintainer email="max.schwarz@uni-bonn.de">Max Schwarz</maintainer>
+	<license>BSD</license>
+
+	<buildtool_depend>catkin</buildtool_depend>
+	<depend>rviz</depend>
+	<depend>actionlib</depend>
+	<depend>nimbro_keyframe_server</depend>
+	<depend>plot_msgs</depend>
+<!-- 	<depend>momaro_upper_body</depend> -->
+
+	<export>
+		<rviz plugin="${prefix}/rviz_plugin.xml" />
+	</export>
+</package>

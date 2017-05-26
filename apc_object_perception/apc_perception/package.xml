@@ -1,0 +1,29 @@
+<package format="2">
+	<name>apc_perception</name>
+	<version>0.0.1</version>
+	<description>Central nodelet calling the different perception methods</description>
+
+	<maintainer email="max.schwarz@uni-bonn.de">Max Schwarz</maintainer>
+
+
+	<license>BSD</license>
+
+
+	<buildtool_depend>catkin</buildtool_depend>
+	<depend>roscpp</depend>
+	<depend>cv_bridge</depend>
+	<depend>image_transport</depend>
+	<depend>nodelet</depend>
+	<depend>apc_objects</depend>
+	<depend>apc_capture</depend>
+	<depend>apc_densecap</depend>
+	<depend>apc_6dpose</depend>
+	<depend>pcl_ros</depend>
+	<depend>actionlib</depend>
+	<depend>apc_shelf_model</depend>
+	<depend>apc_segmentation</depend>
+
+	<export>
+		<nodelet plugin="${prefix}/nodelet_plugins.xml" />
+	</export>
+</package>

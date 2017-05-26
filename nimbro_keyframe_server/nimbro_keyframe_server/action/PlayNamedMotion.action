@@ -1,0 +1,18 @@
+
+# Goal
+string name
+
+---
+#Constants
+uint8 TIMEOUT = 0
+uint8 COLLISION = 1
+uint8 EMERGENCYSTOP = 2
+uint8 PREEMPTED = 3
+
+# Result
+bool success
+uint8 error_code
+
+---
+#Feedback
+float32 estimated_duration

@@ -1,0 +1,9 @@
+<?xml version="1" ?>
+<launch>
+	<node name="ros_player" pkg="apc_ros_player" type="apc_ros_player"  output="screen">
+		<param name="motion_path" value="$(find apc_launch)/motions" />
+
+		<rosparam command="load" file="$(find apc_launch)/hardware/joint_infos.yaml" />
+		<remap from="~collision_detection/collisionDetection" to="/collision_detection/collisionDetection" />
+	</node>
+</launch>

@@ -1,0 +1,9 @@
+<library path="lib/libapc_boxreg_nodelet">
+    <class name="apc_object_perception/BoxRegistration" type="apc_object_perception::BoxRegistration" base_class_type="nodelet::Nodelet">
+        <description>
+            box registration
+        </description>
+    </class>
+</library>
+
+

@@ -1,0 +1,8 @@
+<launch>
+	<node name="depth_filler" pkg="nodelet" type="nodelet"
+		args="standalone depth_filler/Nodelet" output="screen">
+
+		<remap from="~input" to="/camera_fusion/output" />
+		<remap from="~info" to="/camera_stereo/cam2/camera_info" />
+	</node>
+</launch>

@@ -1,0 +1,1 @@
+SUBSYSTEMS=="usb", ATTRS{manufacturer}=="Silicon Labs", ATTRS{product}=="CP2102 USB to UART Bridge Controller", ATTRS{serial}=="0001", KERNEL=="ttyUSB[0123456789]", SYMLINK+="apc_controller", MODE="0666"

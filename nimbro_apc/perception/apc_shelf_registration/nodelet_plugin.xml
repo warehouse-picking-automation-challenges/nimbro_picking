@@ -1,0 +1,7 @@
+<library path="lib/libapc_shelf_registration">
+	<class name="apc_shelf_registration/ShelfRegistration" type="apc_shelf_registration::ShelfRegistration" base_class_type="nodelet::Nodelet">
+		<description>
+			box registration
+		</description>
+	</class>
+</library>

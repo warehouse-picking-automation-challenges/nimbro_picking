@@ -1,0 +1,14 @@
+<library path="lib/libapc_interface_status_display">
+	<class name="apc_interface/StatusDisplay" type="apc_interface::StatusDisplay" base_class_type="rqt_gui_cpp::Plugin">
+		<description>
+			Display the controller state
+		</description>
+		<qtgui>
+			<group>
+				<label>APC</label>
+			</group>
+
+			<label>Hand status</label>
+		</qtgui>
+	</class>
+</library>

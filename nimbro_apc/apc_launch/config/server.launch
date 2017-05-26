@@ -1,0 +1,8 @@
+<launch>
+	<arg name="robot" default="apc" />
+
+	<node name="config_server" pkg="config_server" type="config_server" output="screen" required="false">
+		<param name="config_path" value="$(find apc_launch)/config" />
+		<param name="robot_name" value="$(arg robot)" />
+	</node>
+</launch>

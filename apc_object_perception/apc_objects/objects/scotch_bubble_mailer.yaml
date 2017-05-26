@@ -1,0 +1,9 @@
+standing_hight: 24.5
+
+bBox: [28.5, 24.5, 1.0]
+
+big: true
+
+suction_strength: 1.0
+
+difficulty: 1000

@@ -1,0 +1,24 @@
+<library path="lib/libnimbro_realsense">
+	<class name="nimbro_realsense" type="nimbro_realsense::RealSense" base_class_type="nodelet::Nodelet">
+		<description>
+		</description>
+	</class>
+</library>
+<library path="lib/libnimbro_realsense_stereo">
+	<class name="nimbro_realsense_stereo" type="nimbro_realsense::Stereo" base_class_type="nodelet::Nodelet">
+		<description>
+		</description>
+	</class>
+</library>
+<library path="lib/libnimbro_realsense_depth_fusion">
+	<class name="nimbro_realsense_depth_fusion" type="nimbro_realsense::DepthFusion" base_class_type="nodelet::Nodelet">
+		<description>
+		</description>
+	</class>
+</library>
+<library path="lib/libnimbro_realsense_convert_metric">
+	<class name="nimbro_realsense_convert_metric" type="nimbro_realsense::ConvertMetric" base_class_type="nodelet::Nodelet">
+		<description>
+		</description>
+	</class>
+</library>

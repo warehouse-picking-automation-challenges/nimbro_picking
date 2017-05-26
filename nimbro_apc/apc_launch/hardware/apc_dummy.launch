@@ -1,0 +1,14 @@
+<launch>
+	<include file="$(find apc_model)/launch/model.launch" />
+	<include file="$(find apc_launch)/config/server.launch" />
+	<include file="$(find apc_moveit_config)/launch/planning_context.launch" />
+
+	<node name="robotcontrol" pkg="robotcontrol" type="robotcontrol" output="screen" required="true">
+		<param name="motion_path" value="$(find apc_launch)/motions/" />
+<rosparam>
+hw_interface: "robotcontrol::DummyInterface"
+motion_modules:
+ - "apc_motion::APCMotion"
+</rosparam>
+	</node>
+</launch>

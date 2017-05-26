@@ -1,0 +1,10 @@
+bonus_points: 2
+
+bBox: [20.0, 6.0, 6.0]
+
+difficulty: 100
+
+standing_hight: 20.0
+
+heuristic_grasps: [center]
+top_grasp_high: True

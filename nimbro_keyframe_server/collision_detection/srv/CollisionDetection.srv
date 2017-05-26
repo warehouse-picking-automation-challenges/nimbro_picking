@@ -1,0 +1,4 @@
+sensor_msgs/JointState state
+---
+CollisionPair[] pairs
+float32 distance

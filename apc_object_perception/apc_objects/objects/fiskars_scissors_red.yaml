@@ -1,0 +1,7 @@
+bonus_points: 2
+
+bBox: [14.0, 6.5, 1.0]
+
+suction_strength: 1.0
+
+air_velocity_threshold: 1.0

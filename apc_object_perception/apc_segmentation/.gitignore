@@ -1,0 +1,4 @@
+models/*
+predictions/*
+lua/predictions/*.png
+lua/logs/*

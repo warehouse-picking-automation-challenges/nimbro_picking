@@ -1,0 +1,43 @@
+name: home
+keyframes:
+  - active_joint_groups:
+      arm_eef:
+        interpolation_space: jointspace
+    joints:
+      elbow_joint: 2.502589464187622
+      shoulder_lift_joint: -2.0285484790802
+      shoulder_pan_joint: -0.05841147154569626
+      suc_finger_joint: 0
+      suc_fingertip_joint: 1.551922559738159
+      wrist_1_joint: -0.3370793759822845
+      wrist_2_joint: 1.523137927055359
+      wrist_3_joint: -3.136056661605835
+    label: jointspace
+    linearVelocity: 4
+    angularVelocity: 0.1500000059604645
+    torqueProportion: -1
+    continuous: false
+  - active_joint_groups:
+      arm:
+        interpolation_space: cartesian
+        state:
+          x: 0.8918783664703369
+          y: 0.04100139066576963
+          z: 1.438629150390625
+          roll: 3.141526996057385
+          pitch: 3.129771501779708
+          yaw: 3.113537729400527
+    joints:
+      elbow_joint: 2.502589464187622
+      shoulder_lift_joint: -2.0285484790802
+      shoulder_pan_joint: -0.05841147154569626
+      suc_finger_joint: 0
+      suc_fingertip_joint: 0
+      wrist_1_joint: -0.3370793759822845
+      wrist_2_joint: 1.523137927055359
+      wrist_3_joint: -3.136056661605835
+    label: home
+    linearVelocity: 0.4000000059604645
+    angularVelocity: 0.5
+    torqueProportion: -1
+    continuous: false

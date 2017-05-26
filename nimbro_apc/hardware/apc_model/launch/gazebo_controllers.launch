@@ -1,0 +1,15 @@
+<launch>
+	<!-- Load joint controller configurations from YAML file to parameter server -->
+	<rosparam file="$(find apc_model)/config/controllers.yaml" command="load"/>
+
+	<!-- load the controllers -->
+	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+		output="screen"
+		args="
+			arm_controller
+			joint_state_controller
+			hand_controller
+		"
+	>
+	</node>
+</launch>

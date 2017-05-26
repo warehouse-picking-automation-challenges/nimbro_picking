@@ -1,0 +1,13 @@
+<launch>
+	<rosparam file="$(find apc_interface)/config/controllers.yaml" command="load"/>
+	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+		output="screen"
+		args="
+			hand_controller
+			joint_state_controller
+		"
+	>
+		<env name="LD_PRELOAD" value="/home/max/apc/devel/lib/libjoint_trajectory_controller.so" />
+	</node>
+	<node name="apc_interface" pkg="apc_interface" respawn="false" type="apc_interface" output="screen"></node>
+</launch>

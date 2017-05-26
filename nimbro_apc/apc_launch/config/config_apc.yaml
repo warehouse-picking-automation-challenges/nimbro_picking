@@ -1,0 +1,149 @@
+apc_interface:
+  airVel:
+    alpha: 0.1864
+    alpha_extra_low_pass: 0.0714
+    minTime: 2
+    something_on_tip: 0.1777
+    threshold: 0.2007
+    well_attached: 0.15
+  apc_interface:
+    multi_turn_init_time: 0.2
+  multi_turn_init_threshold: 5
+  multi_turn_init_time: 0.2
+camera_manager:
+  fill_input: 1
+  ne:
+    max_depth_change: 0.1
+    smoothing: 10
+  shadow:
+    threshold: 0.1
+  trust_stereo: 0.06
+  weights:
+    lower: 0.4
+    stereo: 0.05
+    upper: 1
+collision_detection:
+  padding: 0.02
+ik:
+  alpha: 0.03
+  alpha_decay: 0.9
+  angle_weight_slope: -4
+  cost:
+    weight_convenient: 1
+    weight_limit: 0
+    weight_seed: 1.3
+  eef:
+    enabled: 1
+    orient: 100
+    s: 200
+    soft_limit:
+      x: 1.053
+      z: 0.908
+  elbow:
+    dB: 0.5
+    enabled: 1
+    s: 1
+  max_iterations: 20
+  max_posdiff: 0.1
+  nullspace_optimization: 1
+main_nodelet:
+  fill_input: 1
+  ne:
+    max_depth_change: 0.1
+    smoothing: 10
+  shadow:
+    threshold: 0.1
+  trust_stereo: 0.06
+  weights:
+    lower: 0.4
+    stereo: 0.05
+    upper: 1
+momaro:
+  arm_control:
+    lin_vel: 0.2
+    rot_vel: 0.3
+  init_pose: init
+moveit_player:
+  collision_detection:
+    enabled: 0
+  max_acceleration:
+    angular: 0.83
+    joint_space: 2.0
+    joint_space_fingertip: 20.0
+    linear: 0.5
+  max_final_joint_velocity_degree: 10.2
+  max_jerk: 47.46
+  max_vel_limit_degree: 65.6
+  max_velocity:
+    angular: 1
+    joint_space: 1
+    linear: 1
+perception:
+  tote:
+    minPoints: 6000
+plotter:
+  cursorStep: 0.01
+  playbackSpeedExp: 0
+  showEventsInLegend: 1
+  vertScaleFactor: 4
+  wheelScaleFactor: 1.2
+robotcontrol:
+  bodyparts:
+    arm:
+      alpha: 1
+    arm_eef:
+      alpha: 1
+  collision_detection:
+    enabled: 0
+  dummyInterface:
+    addDelay: 1
+    fakeAttitude:
+      fusedX: 0
+      fusedY: 0
+    fakeIMU:
+      accX: 0
+      accY: 0
+      accZ: 9.81
+      gyroX: 0
+      gyroY: 0
+      gyroZ: 0
+      magX: 0.5
+      magY: 0
+      magZ: 0
+    noise:
+      enabled: 1
+      magnitude: 0.002
+  fadeInMaxDelta: 0.005
+  jointAccLimit: 0.5
+  jointVelLimit: 0.5
+  joints:
+    dummy_eef_joint:
+      velocityMode: 0
+    elbow_joint:
+      velocityMode: 0
+    shoulder_lift_joint:
+      velocityMode: 0
+    shoulder_pan_joint:
+      velocityMode: 0
+    wrist_1_joint:
+      velocityMode: 0
+    wrist_2_joint:
+      velocityMode: 0
+    wrist_3_joint:
+      velocityMode: 0
+  pause: 0
+  plotRobotControlData: 0
+  publishCommand: 0
+  robotModel:
+    egoRotIncludesHeading: 0
+    headingIsFusedYaw: 1
+    plotData: 0
+    useFeedbackPos: 0
+    useSupportInfo: 1
+  timerDuration: 0.01
+ros_player:
+  collision_detection:
+    enabled: 1
+  collision_padding: 0.02
+  collsion_subsampling: 1
+  interpolation_period: 0.05

@@ -1,0 +1,11 @@
+
+# Top grasp often fails (hole in the middle)
+heuristic_grasps: [center]
+
+bonus_points: 1
+
+bBox: [9.5, 9.5, 5.0]
+
+standing_hight: 7.0
+
+registration: False

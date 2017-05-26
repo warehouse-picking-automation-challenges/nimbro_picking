@@ -1,0 +1,3 @@
+string[] joints
+float32 torque_proportion
+duration fading_duration

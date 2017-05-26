@@ -1,0 +1,14 @@
+<package format="2">
+	<name>drc_interface</name>
+	<description>Interface to the actuator microcontrollers used e.g. in the Momaro robot</description>
+	<version>1.0.0</version>
+	<license>BSD</license>
+	<maintainer email="max.schwarz@uni-bonn.de">Max Schwarz</maintainer>
+
+	<buildtool_depend>catkin</buildtool_depend>
+	<depend>robotcontrol</depend>
+	<depend>message_generation</depend>
+	<depend>message_runtime</depend>
+	<depend>actuator_msgs</depend>
+	<depend>catch_ros</depend>
+</package>

@@ -1,0 +1,14 @@
+<library path="lib/libapc_control_display">
+	<class name="apc_control/ControlDisplay" type="apc_control::ControlDisplay" base_class_type="rqt_gui_cpp::Plugin">
+		<description>
+			Display the current item state
+		</description>
+		<qtgui>
+			<group>
+				<label>APC</label>
+			</group>
+
+			<label>Item status</label>
+		</qtgui>
+	</class>
+</library>

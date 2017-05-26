@@ -1,0 +1,19 @@
+<package format="2">
+	<name>nimbro_fsm</name>
+	<version>0.0.1</version>
+	<description>
+		Generic FSM support library
+	</description>
+
+	<maintainer email="max.schwarz@uni-bonn.de">Max Schwarz</maintainer>
+
+	<license>BSD</license>
+
+	<buildtool_depend>catkin</buildtool_depend>
+	<depend>roscpp</depend>
+	<depend>rqt_gui</depend>
+
+	<export>
+		<rqt_gui plugin="${prefix}/rqt_plugins.xml" />
+	</export>
+</package>

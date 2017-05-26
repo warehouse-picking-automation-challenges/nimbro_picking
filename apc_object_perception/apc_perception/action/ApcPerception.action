@@ -1,0 +1,29 @@
+
+# Goal
+
+bool isShelf  # Flag to differentiate shelf/tote registration and feature computation. If true then shelf else tote
+
+uint8 box_col   # column
+uint8 box_row   # row
+
+string[] candidate_objects # list of object present in the shelf/tote
+string desired_object      # the desired object to look for
+string[] unwanted_objects     # If possible, do not return these objects again
+
+bool unsure_candidates
+
+---
+# Result
+
+string grasp_object
+geometry_msgs/PoseStamped[] grasp_poses  # array of points that define the set of points to grasp
+
+apc_capture/BoxCoordinates box_coordinates # Box coordinates from ICP
+
+float32 retractPositionY # Y position of the retract corridor
+
+bool object_standing
+
+---
+# Feedback
+

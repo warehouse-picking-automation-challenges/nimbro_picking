@@ -1,0 +1,12 @@
+<package format="2">
+	<name>reflexxes</name>
+	<description>
+		Catkin package for the Reflexxes online trajectory generation library
+	</description>
+	<version>1.2.6</version>
+	<license>LGPL v3.0</license>
+	<author email="info@reflexxes.com">Torsten Kroeger</author>
+	<maintainer email="max.schwarz@uni-bonn.de">Max Schwarz</maintainer>
+
+	<buildtool_depend>catkin</buildtool_depend>
+</package>

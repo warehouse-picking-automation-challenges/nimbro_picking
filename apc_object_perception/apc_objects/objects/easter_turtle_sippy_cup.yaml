@@ -1,0 +1,6 @@
+bonus_points: 2
+
+bBox: [9.0, 13.0, 13.0]
+
+erode: 10
+top_grasp_high: True

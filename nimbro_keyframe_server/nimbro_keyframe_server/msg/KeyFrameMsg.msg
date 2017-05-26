@@ -1,0 +1,14 @@
+float32 angularVelocity
+float32 linearVelocity
+float32 jointSpaceVelocity
+float32 angularAcceleration
+float32 linearAcceleration
+float32 jointSpaceAcceleration
+float32 torqueProportion
+float32 gripperAngle
+float32 gripperYawAngle
+string label
+bool continuous
+
+JointPosition[] joints
+JointGroupMsg[] activeJointGroups

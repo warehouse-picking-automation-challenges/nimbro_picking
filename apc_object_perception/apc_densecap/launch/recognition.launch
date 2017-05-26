@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<launch>
+	<arg name="dataset_path" default="/home/max/apc/bags/apc_data/shelf" />
+
+	<!--<node name="box_registration" pkg="nodelet" type="nodelet"
+		args="standalone apc_object_perception/BoxRegistration" output="screen">
+		<remap from="/camera/depth/points" to="/camera_filler/output" />
+
+	</node>-->
+
+	<node name="densecap" pkg="nodelet" type="nodelet" args="standalone apc_densecap/RecognitionNodelet" output="screen">
+		<param name="dataset_path" value="$(arg dataset_path)" />
+
+		<remap from="~input" to="/camera_filler/output" />
+		<remap from="~camera_info" to="/camera_stereo/cam2/camera_info" />
+	</node>
+</launch>

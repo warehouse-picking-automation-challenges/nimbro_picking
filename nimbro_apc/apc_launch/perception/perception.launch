@@ -1,0 +1,129 @@
+<?xml version="1" ?>
+<launch>
+	<arg name="dataset_path" default="/home/max/apc/bags/apc_data/shelf" />
+	<arg name="recognition_module" default="densecap" />
+	<arg name="mode" />
+	<arg name="registration" default="false" />
+
+	<node name="main_nodelet" pkg="nodelet" type="nodelet" args="manager" />
+
+	<!-- Avoid network traffic as much as possible -->
+	<group>
+		<!-- RGB -->
+		<node name="repub_cam1_rgb" pkg="topic_tools" type="relay"
+			output="screen" args="/camera_stereo/cam1/rgb /bc4/cam1/rgb">
+			<param name="lazy" value="true" />
+		</node>
+		<node name="repub_cam2_rgb" pkg="topic_tools" type="relay"
+			output="screen" args="/camera_stereo/cam2/rgb /bc4/cam2/rgb">
+			<param name="lazy" value="true" />
+		</node>
+
+		<!-- metric depth -->
+		<node name="depth_cam1" pkg="nodelet" type="nodelet" output="screen"
+			args="load nimbro_realsense_convert_metric main_nodelet">
+			<param name="truncate_stamp_pcl" value="true" />
+
+			<remap from="~input" to="/camera_stereo/cam1/depth" />
+			<remap from="~output" to="/bc4/cam1/depth" />
+		</node>
+		<node name="depth_cam2" pkg="nodelet" type="nodelet" output="screen"
+			args="load nimbro_realsense_convert_metric main_nodelet">
+			<param name="truncate_stamp_pcl" value="true" />
+
+			<remap from="~input" to="/camera_stereo/cam2/depth" />
+			<remap from="~output" to="/bc4/cam2/depth" />
+		</node>
+
+		<!-- point clouds -->
+		<node name="cloud_cam1" pkg="nodelet" type="nodelet" output="screen"
+			args="load depth_image_proc/point_cloud_xyzrgb main_nodelet">
+
+			<remap from="rgb/camera_info" to="/camera_stereo/cam1/camera_info" />
+			<remap from="rgb/image_rect_color" to="/bc4/cam1/rgb" />
+			<remap from="depth_registered/image_rect" to="/bc4/cam1/depth" />
+			<remap from="depth_registered/points" to="/bc4/cam1/cloud" />
+		</node>
+		<node name="cloud_cam2" pkg="nodelet" type="nodelet" output="screen"
+			args="load depth_image_proc/point_cloud_xyzrgb main_nodelet">
+
+			<remap from="rgb/camera_info" to="/camera_stereo/cam2/camera_info" />
+			<remap from="rgb/image_rect_color" to="/bc4/cam2/rgb" />
+			<remap from="depth_registered/image_rect" to="/bc4/cam2/depth" />
+			<remap from="depth_registered/points" to="/bc4/cam2/cloud" />
+		</node>
+	</group>
+
+	<node name="camera_manager" pkg="nodelet" type="nodelet" args="manager" output="screen" />
+
+	<node name="camera_fusion" pkg="nodelet" type="nodelet"
+		args="load nimbro_realsense_depth_fusion main_nodelet" output="screen">
+
+		<param name="extrinsics" value="$(find nimbro_realsense)/calib/rotated/extrinsic.txt" />
+
+		<remap from="~upper/cloud" to="/bc4/cam2/cloud" />
+		<remap from="~upper/info" to="camera_stereo/cam2/camera_info" />
+
+		<remap from="~lower/cloud" to="/bc4/cam1/cloud" />
+		<remap from="~lower/info" to="camera_stereo/cam1/camera_info" />
+
+		<remap from="~stereo/cloud" to="/elas_ros/point_cloud" />
+		<remap from="~stereo/info" to="camera_stereo/cam2/rotated/camera_info" />
+	</node>
+
+	<node name="camera_filler" pkg="nodelet" type="nodelet"
+		args="load depth_filler/Nodelet main_nodelet" output="screen">
+
+		<remap from="~input" to="/camera_fusion/output" />
+		<remap from="~info" to="camera_stereo/cam2/camera_info" />
+	</node>
+
+	<node name="test_manager" pkg="nodelet" type="nodelet" args="manager" output="screen" />
+	<group ns="camera_stereo">
+		<include file="$(find nimbro_realsense)/launch/stereo_proc.launch">
+			<arg name="manager" value="/test_manager" />
+			<arg name="left" value="cam2/rotated" />
+			<arg name="right" value="cam1/rotated" />
+		</include>
+	</group>
+
+	<node name="shelf_registration" pkg="nodelet" type="nodelet" output="screen"
+		args="load apc_shelf_registration/ShelfRegistration main_nodelet">
+		<remap from="~cloud" to="/camera_filler/output" />
+	</node>
+
+	<node pkg="elas_ros" type="elas_ros" name="elas_ros" output="screen">
+		<remap from="stereo" to="/camera_stereo" />
+		<remap from="image" to="image_rect_color"/>
+		<remap from="/camera_stereo/left/camera_info" to="/camera_stereo/cam2/rotated/camera_info" />
+		<remap from="/camera_stereo/left/image_rect_color" to="/camera_stereo/cam2/rotated/image_rect_color" />
+		<remap from="/camera_stereo/right/camera_info" to="/camera_stereo/cam1/rotated/camera_info" />
+		<remap from="/camera_stereo/right/image_rect_color" to="/camera_stereo/cam1/rotated/image_rect_color" />
+		<param name="queue_size" value="2" />
+		<param name="disp_min" value="0"/>
+		<param name="disp_max" value="150"/>
+		<param name="add_corners" value="1"/>
+		<param name="beta" value="0"/>
+		<param name="gamma" value="15"/>
+		<param name="ipol_gap_width" value="0" />
+		<param name="lr_threshold" value="1" />
+		<param name="support_threshold" value="0.95" />
+	</node>
+
+	<!--start the perception nodelet   -->
+	<node name="perception" pkg="nodelet" type="nodelet" output="screen" enable-coredumps="false"
+		args="standalone apc_perception/PerceptionNodelet" respawn="true">
+		<param name="recognition_module" value="$(arg recognition_module)" />
+		<param name="dataset_path" value="$(arg dataset_path)" />
+		<param name="mode" value="$(arg mode)" />
+
+		<param name="registration" value="$(arg registration)" />
+
+		<env name="CUDA_VISIBLE_DEVICES" value="0,1" />
+		<param name="segmentation_gpu" value="0" />
+		<param name="densecap_gpu" value="1" />
+
+		<remap from="~cloud" to="/camera_filler/output"/>
+		<remap from="~camera_info" to="/camera_stereo/cam2/camera_info" />
+	</node>
+</launch>

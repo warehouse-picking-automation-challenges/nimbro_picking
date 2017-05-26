@@ -1,0 +1,30 @@
+name: capture_tote
+keyframes:
+  - active_joint_groups:
+      arm_eef:
+        interpolation_space: jointspace
+    joints:
+      suc_finger_joint: 0.0001247330073965713
+      suc_fingertip_joint: 1.57070004940033
+    label: hand
+    linearVelocity: 4.0
+    angularVelocity: 0.1000000014901161
+    torqueProportion: -1
+    continuous: false
+  - active_joint_groups:
+      arm:
+        interpolation_space: cartesian
+        state:
+          x: 0.8161824345588685
+          y: -0.02117679268121729
+          z: 1.112364411354065
+          roll: 0.1134020932167183
+          pitch: 1.379173643723566
+          yaw: 0.09029011835186267
+    joints:
+      {}
+    label: arm
+    linearVelocity: 0.4
+    angularVelocity: 0.4
+    torqueProportion: -1
+    continuous: false

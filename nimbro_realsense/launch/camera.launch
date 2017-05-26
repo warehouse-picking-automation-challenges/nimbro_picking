@@ -1,0 +1,6 @@
+<launch>
+	<arg name="name" default="camera" />
+
+	<node name="$(arg name)" pkg="nodelet" type="nodelet" args="standalone nimbro_realsense" output="screen">
+	</node>
+</launch>

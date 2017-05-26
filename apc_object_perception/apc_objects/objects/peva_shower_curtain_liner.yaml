@@ -1,0 +1,7 @@
+standing_hight: 15.0
+
+bBox: [27.0, 15.0, 3.0]
+
+big: True
+
+stow_grasp_oriented: True

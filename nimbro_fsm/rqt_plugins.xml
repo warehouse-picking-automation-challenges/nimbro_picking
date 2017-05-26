@@ -1,0 +1,14 @@
+<library path="lib/libnimbro_fsm_gui">
+	<class name="nimbro_fsm/GUI" type="nimbro_fsm::StateMachineGUI" base_class_type="rqt_gui_cpp::Plugin">
+		<description>
+			Debug/Control GUI for nimbro_fsm
+		</description>
+		<qtgui>
+			<group>
+				<label>NimbRo</label>
+			</group>
+
+			<label>Nimbro FSM</label>
+		</qtgui>
+	</class>
+</library>

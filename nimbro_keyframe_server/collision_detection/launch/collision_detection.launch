@@ -1,0 +1,6 @@
+<launch>
+
+	<node name="collision_detection" pkg="nimbro_collision_detection" type="nimbro_collision_detection" output="screen" ns="station">
+	</node>
+
+</launch>

@@ -1,0 +1,113 @@
+<?xml version="1" ?>
+<launch>
+	<arg name="name" default="camera" />
+	<arg name="driver" default="true" />
+	<arg name="processing" default="true" />
+	<arg name="calibration" default="false" />
+
+	<node name="$(arg name)_manager" pkg="nodelet" type="nodelet" args="manager" output="screen">
+	</node>
+
+	<node if="$(arg driver)" name="$(arg name)_stereo" pkg="nodelet" type="nodelet"
+		args="load nimbro_realsense_stereo $(arg name)_manager" output="screen">
+
+		<param name="cam1/serial" type="string" value="549205002492" />
+		<param name="cam1/frame_id" value="camera_1_optical" />
+
+		<param name="cam2/serial" type="string" value="549205001925" />
+		<param name="cam2/frame_id" value="camera_2_optical" />
+
+		<param name="rotated_calibration" value="package://nimbro_realsense/calib/rotated/${NAME}.ini" />
+
+		<param name="calibration_mode" value="$(arg calibration)" />
+	</node>
+
+	<group unless="$(arg driver)">
+		<node name="metric_cam1" pkg="nodelet" type="nodelet" args="load nimbro_realsense_convert_metric $(arg name)_manager" output="screen">
+			<param name="truncate_stamp_pcl" value="true" />
+			<remap from="~input" to="/$(arg name)_stereo/cam1/depth" />
+			<remap from="~output" to="/$(arg name)_stereo/cam1/depth_metric" />
+		</node>
+		<node name="metric_cam2" pkg="nodelet" type="nodelet" args="load nimbro_realsense_convert_metric $(arg name)_manager" output="screen">
+			<remap from="~input" to="/$(arg name)_stereo/cam2/depth" />
+			<remap from="~output" to="/$(arg name)_stereo/cam2/depth_metric" />
+		</node>
+
+		<node name="xyz_cam1" pkg="nodelet" type="nodelet" args="load depth_image_proc/point_cloud_xyzrgb $(arg name)_manager" output="screen">
+			<param name="truncate_stamp_pcl" value="true" />
+			<remap from="rgb/camera_info" to="/$(arg name)_stereo/cam1/camera_info" />
+			<remap from="rgb/image_rect_color" to="/$(arg name)_stereo/cam1/rgb" />
+			<remap from="depth_registered/image_rect" to="/$(arg name)_stereo/cam1/depth_metric" />
+			<remap from="depth_registered/points" to="/$(arg name)_stereo/cam1/cloud" />
+		</node>
+
+		<node name="xyz_cam2" pkg="nodelet" type="nodelet" args="load depth_image_proc/point_cloud_xyzrgb $(arg name)_manager" output="screen">
+			<remap from="rgb/camera_info" to="/$(arg name)_stereo/cam2/camera_info" />
+			<remap from="rgb/image_rect_color" to="/$(arg name)_stereo/cam2/rgb" />
+			<remap from="depth_registered/image_rect" to="/$(arg name)_stereo/cam2/depth_metric" />
+			<remap from="depth_registered/points" to="/$(arg name)_stereo/cam2/cloud" />
+		</node>
+	</group>
+
+	<node name="$(arg name)_tf" pkg="tf" type="static_transform_publisher"
+		args="0 0 0 -1.5707963267948966 0 0 camera_2_optical camera_2_optical_rotated 100">
+	</node>
+
+	<node if="$(arg calibration)" name="$(arg name)_calibration" pkg="camera_calibration"
+		type="cameracalibrator.py" args="--size 7x10 --square 0.058" output="screen">
+		<remap from="right" to="/camera_stereo/cam1/rotated/image_raw" />
+		<remap from="left" to="/camera_stereo/cam2/rotated/image_raw" />
+		<remap from="left_camera" to="/camera_stereo/cam2/rotated" />
+		<remap from="right_camera" to="/camera_stereo/cam1/rotated" />
+	</node>
+
+<group if="$(arg processing)">
+	<node name="$(arg name)_fusion" pkg="nodelet" type="nodelet"
+		args="load nimbro_realsense_depth_fusion $(arg name)_manager" output="screen">
+
+		<param name="extrinsics" value="$(find nimbro_realsense)/calib/rotated/extrinsic.txt" />
+
+		<remap from="~upper/cloud" to="$(arg name)_stereo/cam2/cloud" />
+		<remap from="~upper/info" to="$(arg name)_stereo/cam2/camera_info" />
+		
+		<remap from="~lower/cloud" to="$(arg name)_stereo/cam1/cloud" />
+		<remap from="~lower/info" to="$(arg name)_stereo/cam1/camera_info" />
+
+		<remap from="~stereo/cloud" to="/elas_ros/point_cloud" />
+		<remap from="~stereo/info" to="$(arg name)_stereo/cam2/rotated/camera_info" />
+	</node>
+
+	<node name="$(arg name)_filler" pkg="nodelet" type="nodelet"
+		args="load depth_filler/Nodelet $(arg name)_manager" output="screen">
+
+		<remap from="~input" to="/$(arg name)_fusion/output" />
+		<remap from="~info" to="$(arg name)_stereo/cam2/camera_info" />
+	</node>
+
+	<node name="test_manager" pkg="nodelet" type="nodelet" args="manager" output="screen" />
+	<group ns="$(arg name)_stereo" if="$(arg driver)">
+		<include file="$(find nimbro_realsense)/launch/stereo_proc.launch">
+			<arg name="manager" value="/test_manager" />
+			<arg name="left" value="cam2/rotated" />
+			<arg name="right" value="cam1/rotated" />
+		</include>
+	</group>
+
+	<node pkg="elas_ros" type="elas_ros" name="elas_ros" output="screen">
+		<remap from="stereo" to="/camera_stereo" />
+		<remap from="image" to="image_rect_color"/>
+		<remap from="/camera_stereo/left/camera_info" to="/camera_stereo/cam2/rotated/camera_info" />
+		<remap from="/camera_stereo/left/image_rect_color" to="/camera_stereo/cam2/rotated/image_rect_color" />
+		<remap from="/camera_stereo/right/camera_info" to="/camera_stereo/cam1/rotated/camera_info" />
+		<remap from="/camera_stereo/right/image_rect_color" to="/camera_stereo/cam1/rotated/image_rect_color" />
+		<param name="disp_min" value="0"/>
+		<param name="disp_max" value="150"/>
+		<param name="add_corners" value="1"/>
+		<param name="beta" value="0"/>
+		<param name="gamma" value="15"/>
+		<param name="ipol_gap_width" value="0" />
+		<param name="lr_threshold" value="1" />
+		<param name="support_threshold" value="0.95" />
+	</node>
+</group>
+</launch>

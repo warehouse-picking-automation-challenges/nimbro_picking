@@ -1,0 +1,10 @@
+<package format="2">
+	<name>apc_model</name>
+	<description>URDF model of the APC setup</description>
+	<version>0.0.1</version>
+	<license>BSD</license>
+	<maintainer email="max.schwarz@uni-bonn.de">Max Schwarz</maintainer>
+
+	<buildtool_depend>catkin</buildtool_depend>
+	<depend>xacro</depend>
+</package>

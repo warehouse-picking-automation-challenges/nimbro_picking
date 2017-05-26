@@ -1,0 +1,20 @@
+<launch>
+	<node name="logger" pkg="rrlogger" type="rrlogger" output="screen">
+<rosparam>
+heartbeatEnabled: false
+heartbeatOptional: false
+heartbeatTimeout: 1
+maxNumBags: 3
+maxTotalMB: 2048
+plotTopics:
+  - /
+tfFrames:
+  - /
+topics:
+  - /tf
+  - /plot
+  - /joint_states
+  - /joint_commands
+</rosparam>
+	</node>
+</launch>

@@ -1,0 +1,18 @@
+<package format="2">
+	<name>apc_shelf_registration</name>
+	<description>Registration of the whole shelf (initial ICP)</description>
+	<version>0.0.1</version>
+	<maintainer email="max.schwarz@uni-bonn.de">Max Schwarz</maintainer>
+	<license>BSD</license>
+
+	<buildtool_depend>catkin</buildtool_depend>
+	<depend>pcl_ros</depend>
+	<depend>apc_shelf_model</depend>
+	<depend>nimbro_keyframe_server</depend>
+	<depend>nodelet</depend>
+	<depend>actionlib</depend>
+
+	<export>
+		<nodelet plugin="${prefix}/nodelet_plugin.xml" />
+	</export>
+</package>

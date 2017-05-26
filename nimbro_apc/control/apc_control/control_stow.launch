@@ -1,0 +1,16 @@
+<?xml version="1" ?>
+<launch>
+	<arg name="simulation" default="false" />
+	<arg name="shelf_regist" default="true" />
+	<arg name="stow_difficulty" default="1" />
+	<arg name="task" default="apc_stow_task_example.json" />
+
+	<node name="apc_controller" pkg="apc_control" type="apc_control" output="screen">
+		<param name="json_input_path" value="$(find apc_control)/files/$(arg task)" />
+		<param name="json_output_path" value="$(find apc_control)/files/stow_output" />
+		<param name="picking" value="false" />
+		<param name="simulation" value="$(arg simulation)" />
+		<param name="shelf_regist" value="$(arg shelf_regist)" />
+		<param name="stow_difficulty" value="$(arg stow_difficulty)" />
+	</node>
+</launch>

@@ -1,0 +1,16 @@
+<launch>
+	<arg name="debug" default="false"/>
+	<arg name="launch_prefix" value="gdb run --args" if="$(arg debug)"/>
+	<arg name="launch_prefix" value="" unless="$(arg debug)"/>
+
+	<node pkg="tf" type="static_transform_publisher" name="shelflink_broadcaster" args="1.7 0 0.0 1.5708 0 1.57078 world shelf 100" />
+
+	<node pkg="tf" type="static_transform_publisher" name="totelink_broadcaster_rviz" args="0.8 0 0.404 1.5708 0.02 0 world tote_rviz 100" />
+
+	<node pkg="apc_launch" type="shelfmarker.sh" name="shelf_broadcaster" output="screen"/>
+	<node pkg="apc_launch" type="totemarker.sh" name="tote_broadcaster_rviz" output="screen"/>
+
+	<node launch-prefix="$(arg launch_prefix)" name="$(anon rviz_kf_editor)" pkg="rviz" type="rviz" output="screen" required="true" args="-d $(find apc_launch)/manipulation/keyframe_editor.rviz">
+		<remap from="~keyframe_server" to="/ros_player" />
+	</node>
+</launch>

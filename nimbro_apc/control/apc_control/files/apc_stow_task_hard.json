@@ -1,0 +1,76 @@
+{
+    "bin_contents": {
+        "bin_A": [
+            "rolodex_jumbo_pencil_cup"
+        ],
+        "bin_B": [
+            "i_am_a_bunny_book",
+            "fitness_gear_3lb_dumbbell"
+        ],
+        "bin_C": [
+            "scotch_duct_tape"
+        ],
+        "bin_D": [
+            "easter_turtle_sippy_cup",
+            "folgers_classic_roast_coffee",
+            "woods_extension_cord",
+            "cloud_b_plush_bear",
+            "up_glucose_bottle",
+            "womens_knit_gloves",
+            "kyjen_squeakin_eggs_plush_puppies"
+        ],
+        "bin_E": [
+            "command_hooks",
+            "scotch_bubble_mailer",
+            "safety_first_outlet_plugs",
+            "staples_index_cards",
+            "crayola_24_ct"
+        ],
+        "bin_F": [
+            "expo_dry_erase_board_eraser"
+        ],
+        "bin_G": [
+            "laugh_out_loud_joke_book",
+            "jane_eyre_dvd",
+            "rawlings_baseball"
+        ],
+        "bin_H": [
+            "expo_dry_erase_board_eraser",
+            "platinum_pets_dog_bowl",
+            "dove_beauty_bar"
+        ],
+        "bin_I": [
+            "soft_white_lightbulb",
+            "dr_browns_bottle_brush"
+        ],
+        "bin_J": [
+            "peva_shower_curtain_liner",
+            "barkely_hide_bones"
+        ],
+        "bin_K": [
+            "scotch_duct_tape",
+            "oral_b_toothbrush_red",
+            "fiskars_scissors_red",
+            "cherokee_easy_tee_shirt",
+            "creativity_chenille_stems"
+        ],
+        "bin_L": [
+            "kleenex_tissue_box",
+            "dasani_water_bottle"
+        ]
+    },
+    "tote_contents": [
+        "elmers_washable_no_run_school_glue",
+        "hanes_tube_socks",
+        "kleenex_paper_towels",
+        "staples_index_cards",
+        "cool_shot_glue_sticks",
+        "scotch_bubble_mailer",
+        "dasani_water_bottle",
+        "ticonderoga_12_pencils",
+        "clorox_utility_brush",
+        "creativity_chenille_stems",
+        "oral_b_toothbrush_green",
+        "elmers_washable_no_run_school_glue"
+    ]
+}

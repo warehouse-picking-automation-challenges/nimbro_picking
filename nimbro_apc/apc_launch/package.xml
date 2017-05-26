@@ -1,0 +1,9 @@
+<package format="2">
+	<name>apc_launch</name>
+	<description>APC launch files</description>
+	<version>0.0.1</version>
+	<license>BSD</license>
+	<maintainer email="max.schwarz@uni-bonn.de">Max Schwarz</maintainer>
+
+	<buildtool_depend>catkin</buildtool_depend>
+</package>

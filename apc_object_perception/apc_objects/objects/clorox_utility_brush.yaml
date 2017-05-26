@@ -1,0 +1,9 @@
+
+# Top grasp often fails (handle)
+heuristic_grasps: [top, center]
+
+top_grasp_high: True
+
+bonus_points: 2
+
+bBox: [7.0, 14.0, 9.5]

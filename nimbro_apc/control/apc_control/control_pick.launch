@@ -1,0 +1,16 @@
+<?xml version="1" ?>
+<launch>
+	<arg name="pick_index" default="-1" />
+	<arg name="simulation" default="false" />
+	<arg name="shelf_regist" default="true" />
+	<arg name="task" default="apc_stow_task_example.json" />
+
+	<node name="apc_controller" pkg="apc_control" type="apc_control" output="screen" required="true">
+		<param name="json_input_path" value="$(find apc_control)/files/$(arg task)" />
+		<param name="json_output_path" value="$(find apc_control)/files/pick_output" />
+		<param name="picking" value="true" />
+		<param name="pick_index" value="$(arg pick_index)" />
+		<param name="simulation" value="$(arg simulation)" />
+		<param name="shelf_regist" value="$(arg shelf_regist)" />
+	</node>
+</launch>

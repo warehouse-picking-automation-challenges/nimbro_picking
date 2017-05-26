@@ -1,0 +1,31 @@
+name: capture_D
+keyframes:
+  - active_joint_groups:
+      arm_eef:
+        interpolation_space: jointspace
+    joints:
+      suc_finger_joint: 0
+      suc_fingertip_joint: 1.57070004940033
+    label: frame0
+    linearVelocity: 4
+    angularVelocity: 0.1000000014901161
+    torqueProportion: -1
+    continuous: false
+  - active_joint_groups:
+      arm:
+        interpolation_space: cartesian
+        state:
+          x: 0.9223815202713013
+          y: 0.2899999916553498
+          z: 1.530890941619873
+          roll: 3.141592507843007
+          pitch: 3.056334001390578
+          yaw: 3.141592586503118
+    joints:
+      suc_finger_joint: 0
+      suc_fingertip_joint: 1.57070004940033
+    label: "[shelf]"
+    linearVelocity: 0.6000000238418579
+    angularVelocity: 1.200000047683716
+    torqueProportion: -1
+    continuous: false

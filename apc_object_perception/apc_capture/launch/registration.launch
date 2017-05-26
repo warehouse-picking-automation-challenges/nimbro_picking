@@ -1,0 +1,7 @@
+<launch>
+	<node pkg="apc_launch" type="shelfmarker_perception.sh" name="shelf_broadcaster" output="screen" />
+
+	<node name="registration" pkg="nodelet" type="nodelet" args="standalone apc_object_perception/BoxRegistration" output="screen">
+		<remap from="/camera/depth/points" to="/camera_filler/output" />
+	</node>
+</launch>

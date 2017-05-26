@@ -1,0 +1,7 @@
+bonus_points: 2
+
+erode: 20
+
+bBox: [30.0, 11.0, 5.0]
+
+stow_grasp_oriented: True

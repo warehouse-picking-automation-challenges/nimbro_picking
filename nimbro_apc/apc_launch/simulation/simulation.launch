@@ -1,0 +1,18 @@
+<launch>
+	<!-- Launch apc_model/launch/gazebo.launch separately! -->
+
+	<include file="$(find apc_model)/launch/model.launch" />
+	<include file="$(find apc_launch)/config/server.launch" />
+	<include file="$(find apc_moveit_config)/launch/planning_context.launch" />
+
+	<node name="collision_detection" pkg="nimbro_collision_detection" type="nimbro_collision_detection" output="screen">
+		<remap from="/joint_states" to="/joint_states_disabled" />
+	</node>
+
+	<node name="ros_player" pkg="apc_ros_player" type="apc_ros_player"  output="screen">
+		<param name="motion_path" value="$(find apc_launch)/motions" />
+
+		<rosparam command="load" file="$(find apc_launch)/hardware/joint_infos_gazebo.yaml" />
+		<remap from="~collision_detection/collisionDetection" to="/collision_detection/collisionDetection" />
+	</node>
+</launch>

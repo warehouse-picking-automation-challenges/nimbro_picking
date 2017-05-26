@@ -1,0 +1,16 @@
+<package format="2">
+	<name>apc_world</name>
+	<version>0.0.0</version>
+	<description>APC World for collision detection</description>
+
+	<maintainer email="schuell1@cs.uni-bonn.de">Sebastian Schüller</maintainer>
+	<license>TODO</license>
+
+	<buildtool_depend>catkin</buildtool_depend>
+	<depend>moveit_core</depend>
+	<depend>nimbro_keyframe_server</depend>
+	<depend>tf</depend>
+	<depend>apc_objects</depend>
+	<depend>roscpp</depend>
+	<depend>tf_conversions</depend>
+</package>

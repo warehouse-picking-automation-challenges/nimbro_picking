@@ -1,0 +1,23 @@
+<?xml version="1" ?>
+<launch>
+	<arg name="nodelet_mode" default="standalone" />
+	<arg name="nodelet_manager" default="" />
+
+	<node name="camera_stereo" pkg="nodelet" type="nodelet"
+		args="$(arg nodelet_mode) nimbro_realsense_stereo $(arg nodelet_manager)" output="screen">
+
+		<param name="cam1/serial" value="54FFFFFF92050024FFFFFF92" />
+		<param name="cam1/frame_id" value="camera_1_optical" />
+
+		<param name="cam2/serial" value="54FFFFFF9205001925" />
+		<param name="cam2/frame_id" value="camera_2_optical" />
+
+		<param name="rotated_calibration" value="package://nimbro_realsense/calib/rotated/${NAME}.ini" />
+
+		<param name="calibration_mode" value="false" />
+	</node>
+
+	<node name="camera_tf" pkg="tf" type="static_transform_publisher"
+		args="0 0 0 -1.5707963267948966 0 0 camera_2_optical camera_2_optical_rotated 100">
+	</node>
+</launch>

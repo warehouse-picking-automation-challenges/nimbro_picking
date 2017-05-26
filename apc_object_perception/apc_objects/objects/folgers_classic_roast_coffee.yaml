@@ -1,0 +1,5 @@
+bBox: [10.0, 10.0, 14.0]
+
+heuristic_grasps: [center]
+
+big: True

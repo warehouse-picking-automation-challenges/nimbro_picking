@@ -1,0 +1,36 @@
+
+# Goal
+nimbro_keyframe_server/MotionMsg motion_msg
+string motion_name
+bool use_existing_motion
+
+---
+# Result
+
+# error codes
+uint8 TIMEOUT = 0
+uint8 COLLISION = 1
+uint8 EMERGENCYSTOP = 2
+uint8 PREEMPTED = 3
+uint8 INVALID_GOAL = 4
+uint8 INVALID_JOINTS = 5
+uint8 PROTECTIVE_STOP = 6
+
+# finish states
+uint8 FINISHED = 0                    # The motion was played successfully
+uint8 REJECTED = 1                    # A problem occured before playback began
+uint8 ABORTED_DURING_PLAYBACK = 2     # A problem occured during playback
+
+# Result
+bool success
+uint8 finish_state
+uint8 error_code
+string error_string
+
+# path to the failed FollowJointTrajectoryAction (if applicable)
+string failed_action
+
+---
+#Feedback
+float32 estimated_duration
+ExecutionFeedback player_feedback

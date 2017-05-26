@@ -1,0 +1,7 @@
+<library path="lib/libapc_perception">
+    <class name="apc_perception/PerceptionNodelet" type="apc_perception::PerceptionNodelet" base_class_type="nodelet::Nodelet">
+        <description>
+            Perception controller
+        </description>
+    </class>
+</library>

@@ -1,0 +1,14 @@
+<package format="2">
+  <name>apc_annotation</name>
+  <version>0.0.1</version>
+  <description>AIS Image annotation tool</description>
+
+  <maintainer email="max.schwarz@uni-bonn.de">Max Schwarz</maintainer>
+  <license>BSD</license>
+
+
+  
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>apc_objects</depend>
+
+</package>

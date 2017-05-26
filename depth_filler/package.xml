@@ -1,0 +1,20 @@
+<package format="2">
+	<name>depth_filler</name>
+	<description>
+		Nodelet and executable for filling missing depth values guided by the
+		RGB image
+	</description>
+	<version>0.0.1</version>
+	<license>LGPL</license>
+	<maintainer email="max.schwarz@uni-bonn.de">Max Schwarz</maintainer>
+
+	<buildtool_depend>catkin</buildtool_depend>
+	<depend>nodelet</depend>
+	<depend>image_geometry</depend>
+	<depend>pcl_ros</depend>
+	<depend>config_server</depend>
+
+	<export>
+		<nodelet plugin="${prefix}/nodelet_plugin.xml" />
+	</export>
+</package>
