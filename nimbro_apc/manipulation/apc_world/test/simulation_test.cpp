@@ -39,7 +39,7 @@ int main(int argc, char** argv)
 			ROS_ERROR("Failed to create world!");
 			return 1;
 		}
-		boost::shared_ptr<robot_state::RobotState> state(
+		robot_state::RobotStatePtr state(
 			new robot_state::RobotState(model));
 		state->setToDefaultValues();
 		for(auto& group : model->getJointModelGroups())
