@@ -39,9 +39,9 @@ bool APCMotion::init(robotcontrol::RobotModel* model)
 		return false;
 
 	// MoveIt init
-	m_moveitLoader = boost::make_shared<robot_model_loader::RobotModelLoader>(
+	m_moveitLoader.reset(new robot_model_loader::RobotModelLoader(
 		"robot_description"
-	);
+	));
 	m_moveitModel = m_moveitLoader->getModel();
 	ROS_DEBUG("Model frame: %s", m_moveitModel->getModelFrame().c_str());
 

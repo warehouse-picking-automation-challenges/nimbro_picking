@@ -9,8 +9,8 @@ namespace apc_motion
 {
 
 BodyPart::BodyPart(robotcontrol::RobotModel* robotModel,
-	const boost::shared_ptr<robot_model::RobotModel>& moveItModel,
-	const boost::shared_ptr<robot_state::RobotState>& moveItState,
+	const robot_model::RobotModelPtr& moveItModel,
+	const robot_state::RobotStatePtr& moveItState,
 	const robot_model::JointModelGroup* moveItGroup)
  : m_model(robotModel)
  , m_moveItModel(moveItModel)

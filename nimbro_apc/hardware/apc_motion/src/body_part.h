@@ -18,8 +18,8 @@ public:
 	typedef boost::shared_ptr<BodyPart> Ptr;
 
 	BodyPart(robotcontrol::RobotModel* robotModel,
-		const boost::shared_ptr<robot_model::RobotModel>& moveItModel,
-		const boost::shared_ptr<robot_state::RobotState>& moveItState,
+		const robot_model::RobotModelPtr& moveItModel,
+		const robot_state::RobotStatePtr& moveItState,
 		const robot_model::JointModelGroup* moveItGroup
 	);
 
@@ -28,8 +28,8 @@ public:
 	void step();
 private:
 	robotcontrol::RobotModel* m_model;
-	boost::shared_ptr<robot_model::RobotModel> m_moveItModel;
-	boost::shared_ptr<robot_state::RobotState> m_moveItState;
+	robot_model::RobotModelPtr m_moveItModel;
+	robot_state::RobotStatePtr m_moveItState;
 
 	const robot_model::JointModelGroup* m_moveItGroup;
 
