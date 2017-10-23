@@ -43,7 +43,7 @@ find_package(Boost REQUIRED COMPONENTS
 
 catkin_package(
 	INCLUDE_DIRS include
-	CATKIN_DEPENDS pcl_ros
+	CATKIN_DEPENDS pcl_ros apc_capture
 )
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11")
@@ -61,7 +61,7 @@ add_library(apc_perception
 	src/color_lut.cpp
 )
 target_link_libraries(apc_perception
-	${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBS} libvtkCommon.so libvtkFiltering.so
+	${catkin_LIBRARIES} ${PCL_LIBRARIES} ${OpenCV_LIBS}
 )
 add_dependencies(apc_perception
 	${PROJECT_NAME}_generate_messages_cpp
