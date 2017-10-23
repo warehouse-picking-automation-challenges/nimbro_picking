@@ -16,6 +16,7 @@ find_package(catkin REQUIRED COMPONENTS
 	geometry_msgs
 	apc_objects
 	apc_shelf_model
+	nimbro_keyframe_server
 )
 
 find_package(Boost REQUIRED COMPONENTS
