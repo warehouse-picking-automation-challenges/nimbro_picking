@@ -113,9 +113,9 @@ void Control::init()
 
 	updateShelfState();
 
-	m_robot_model_loader = boost::make_shared<robot_model_loader::RobotModelLoader>(
+	m_robot_model_loader.reset(new robot_model_loader::RobotModelLoader(
 		"robot_description", false
-	);
+	));
 	m_robot_model = m_robot_model_loader->getModel();
 
 	m_robot_state.reset(new robot_state::RobotState(m_robot_model));

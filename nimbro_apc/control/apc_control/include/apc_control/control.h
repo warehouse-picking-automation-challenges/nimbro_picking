@@ -229,9 +229,9 @@ private:
 	//Pick motions
 	MotionPtr m_tote_release;
 
-	boost::shared_ptr<robot_model_loader::RobotModelLoader> m_robot_model_loader;
-	boost::shared_ptr<robot_model::RobotModel> m_robot_model;
-	boost::shared_ptr<robot_state::RobotState> m_robot_state;
+	robot_model_loader::RobotModelLoaderPtr m_robot_model_loader;
+	robot_model::RobotModelPtr m_robot_model;
+	robot_state::RobotStatePtr m_robot_state;
 
 	Eigen::Affine3d m_finger25arm_transform;
 	Eigen::Affine3d m_finger05arm_transform;

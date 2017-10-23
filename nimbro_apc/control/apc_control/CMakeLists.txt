@@ -18,6 +18,8 @@ find_package(catkin REQUIRED COMPONENTS
 	message_generation
 	moveit_ros_planning_interface
 	moveit_core
+	apc_interface
+	apc_perception
 )
 
 find_package(Eigen REQUIRED)
